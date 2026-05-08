@@ -1,412 +1,154 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kişisel Portföy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --accent: #2563eb;
+            --secondary: #64748b;
+        }
 
-    :root {
-      --bg: #050816;
-      --card: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.12);
-      --text: #f5f7ff;
-      --muted: #9ba4c7;
-      --accent: #7c5cff;
-      --accent2: #00d4ff;
-      --shadow: 0 10px 40px rgba(0,0,0,0.35);
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 35%),
-                  radial-gradient(circle at bottom right, rgba(0,212,255,0.15), transparent 30%),
-                  var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
 
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      backdrop-filter: blur(16px);
-      background: rgba(5,8,22,0.5);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-    }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
 
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-    }
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        h2 { color: var(--accent); border-bottom: 2px solid var(--accent); display: inline-block; }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      transition: 0.3s ease;
-      font-weight: 500;
-    }
+        .section { margin-bottom: 60px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    .nav-links a:hover {
-      color: white;
-    }
+        .card {
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
 
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 120px 24px;
-    }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-    }
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #1e293b;
+            color: white;
+        }
 
-    .hero-text {
-      flex: 1;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(124,92,255,0.15);
-      border: 1px solid rgba(124,92,255,0.4);
-      color: #d4cbff;
-      margin-bottom: 24px;
-      font-size: 0.95rem;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 1;
-      margin-bottom: 24px;
-    }
-
-    h1 span {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.15rem;
-      line-height: 1.8;
-      max-width: 650px;
-      margin-bottom: 36px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 26px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s ease;
-    }
-
-    .primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: white;
-      box-shadow: var(--shadow);
-    }
-
-    .primary:hover {
-      transform: translateY(-3px);
-    }
-
-    .secondary {
-      border: 1px solid var(--border);
-      color: white;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-card {
-      flex: 1;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 40px;
-      backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: rgba(124,92,255,0.3);
-      border-radius: 50%;
-      filter: blur(100px);
-      top: -120px;
-      right: -120px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 20px;
-    }
-
-    .mini-card {
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .mini-card h3 {
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-
-    .mini-card p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 18px;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      max-width: 700px;
-      line-height: 1.8;
-      margin-bottom: 48px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .glass {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      backdrop-filter: blur(18px);
-      transition: 0.3s ease;
-    }
-
-    .glass:hover {
-      transform: translateY(-6px);
-      border-color: rgba(124,92,255,0.4);
-    }
-
-    .glass h3 {
-      margin-bottom: 14px;
-      font-size: 1.2rem;
-    }
-
-    .glass p {
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 24px;
-    }
-
-    .skill {
-      padding: 12px 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #dce3ff;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px 60px;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        padding-top: 100px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <div class="gezinti-kapsayici">
-      <div class="logo-alani">StepsProject</div>
-      <div class="gezinti-linkleri">
+    <nav>
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#vision">Vision</a>
-      </div>
+        <a href="#skills">Experience</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <header>
+        <h1>[Your Name Here]</h1>
+        <p style="font-size: 1.2rem; color: var(--secondary);">Digital Innovator | Problem Solver | Creative Mind</p>
+        <a href="#about" class="btn">View My Work</a>
+    </header>
+
+    <div class="container">
+        
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>
+                I am a driven individual focused on high-quality results and continuous growth. 
+                My approach combines technical proficiency with a keen eye for detail, ensuring 
+                that every project I undertake meets the highest standards of excellence.
+            </p>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Key Expertise</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Strategic Planning</h3>
+                    <p>Analyzing complex data to create actionable insights and long-term goals.</p>
+                </div>
+                <div class="card">
+                    <h3>Technical Skillset</h3>
+                    <p>Proficient in modern tools and methodologies within my field.</p>
+                </div>
+                <div class="card">
+                    <h3>Communication</h3>
+                    <p>Bridging the gap between complex ideas and clear, concise execution.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+            <p><strong>Email:</strong> your.email@example.com</p>
+            <p><strong>Location:</strong> [Your City, Country]</p>
+        </section>
+
     </div>
-  </nav>
 
-  <section class="ana-ekran">
-    <div class="ana-yazi">
-      <div class="etiket">⚡ Personal Brand Website</div>
-      <h1>Creating Ideas Into <span>Digital Reality</span></h1>
-      <p>
-        I'm someone who explores technology, creativity, and innovation. I use AI tools like ChatGPT for a wide variety of interests and projects, constantly learning, experimenting, and building new ideas.
-      </p>
-
-      <div class="butonlar">
-        <a href="#about" class="buton birincil">Explore More</a>
-        <a href="#vision" class="buton ikincil">My Vision</a>
-      </div>
-    </div>
-
-    <div class="ana-kart">
-      <h2 style="font-size:2rem; margin-bottom: 12px;">About Me</h2>
-      <p style="color: var(--muted); line-height:1.8;">
-        Passionate about digital experiences, futuristic design, and creating meaningful projects.
-      </p>
-
-      <div class="kart-izgara">
-        <div class="mini-kart">
-          <h3>🚀 Innovation</h3>
-          <p>Always experimenting with new ideas and technologies.</p>
-        </div>
-
-        <div class="mini-kart">
-          <h3>🎨 Creativity</h3>
-          <p>Focused on elegant visuals and immersive experiences.</p>
-        </div>
-
-        <div class="mini-kart">
-          <h3>🤖 AI & Tech</h3>
-          <p>Exploring modern tools and future-driven solutions.</p>
-        </div>
-
-        <div class="mini-kart">
-          <h3>🌍 Growth</h3>
-          <p>Continuously learning and evolving every single day.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <h2 class="bolum-baslik">Who I Am</h2>
-    <p class="bolum-altbaslik">
-      This website was designed as a premium digital identity — modern, minimal, and futuristic. It reflects ambition, creativity, and curiosity.
-    </p>
-
-    <div class="hakkimda-izgara">
-      <div class="cam-kart">
-        <h3>Creative Mindset</h3>
-        <p>
-          I enjoy discovering new concepts, designing unique experiences, and turning imagination into real digital creations.
-        </p>
-      </div>
-
-      <div class="cam-kart">
-        <h3>Technology Driven</h3>
-        <p>
-          I actively explore AI, web technologies, and innovative tools to stay ahead and keep learning.
-        </p>
-      </div>
-
-      <div class="cam-kart">
-        <h3>Future Focused</h3>
-        <p>
-          I believe the future belongs to creators who combine technology, creativity, and originality.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2 class="bolum-baslik">Interests & Strengths</h2>
-    <p class="bolum-altbaslik">
-      A blend of technology, creativity, and curiosity powers everything I build.
-    </p>
-
-    <div class="yetenekler">
-      <div class="yetenek">Artificial Intelligence</div>
-      <div class="yetenek">Modern Web Design</div>
-      <div class="yetenek">Creative Thinking</div>
-      <div class="yetenek">UI / UX Concepts</div>
-      <div class="yetenek">Digital Innovation</div>
-      <div class="yetenek">Learning & Experimentation</div>
-      <div class="yetenek">Future Technologies</div>
-      <div class="yetenek">Personal Branding</div>
-    </div>
-  </section>
-
-  <section id="vision">
-    <h2 class="bolum-baslik">My Vision</h2>
-    <p class="bolum-altbaslik">
-      I want to create impactful experiences, learn continuously, and push beyond ordinary ideas. This website represents the beginning of something bigger.
-    </p>
-
-    <div class="cam-kart">
-      <h3 style="margin-bottom:18px;">"Build. Learn. Create. Repeat."</h3>
-      <p>
-        The future is shaped by people willing to experiment, adapt, and innovate. My goal is to keep moving forward while creating things that inspire others.
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 • Designed with a futuristic aesthetic and premium user experience.
-  </footer>
+    <footer>
+        <p>&copy; 2026 [Your Name]. Built for the future.</p>
+    </footer>
 
 </body>
 </html>
