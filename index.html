@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #050816;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: #f5f7ff;
+      --muted: #9ba4c7;
+      --accent: #7c5cff;
+      --accent2: #00d4ff;
+      --shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 35%),
+                  radial-gradient(circle at bottom right, rgba(0,212,255,0.15), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      backdrop-filter: blur(16px);
+      background: rgba(5,8,22,0.5);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 120px 24px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(124,92,255,0.15);
+      border: 1px solid rgba(124,92,255,0.4);
+      color: #d4cbff;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      max-width: 650px;
+      margin-bottom: 36px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .secondary {
+      border: 1px solid var(--border);
+      color: white;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-card {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(124,92,255,0.3);
+      border-radius: 50%;
+      filter: blur(100px);
+      top: -120px;
+      right: -120px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .mini-card {
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-card h3 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .mini-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(18px);
+      transition: 0.3s ease;
+    }
+
+    .glass:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,92,255,0.4);
+    }
+
+    .glass h3 {
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+    }
+
+    .glass p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .skill {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #dce3ff;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 60px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        padding-top: 100px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">YOUR NAME</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#vision">Vision</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="badge">⚡ Personal Brand Website</div>
+      <h1>Creating Ideas Into <span>Digital Reality</span></h1>
+      <p>
+        I'm someone who explores technology, creativity, and innovation. I use AI tools like ChatGPT for a wide variety of interests and projects, constantly learning, experimenting, and building new ideas.
+      </p>
+
+      <div class="buttons">
+        <a href="#about" class="btn primary">Explore More</a>
+        <a href="#vision" class="btn secondary">My Vision</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h2 style="font-size:2rem; margin-bottom: 12px;">About Me</h2>
+      <p style="color: var(--muted); line-height:1.8;">
+        Passionate about digital experiences, futuristic design, and creating meaningful projects.
+      </p>
+
+      <div class="card-grid">
+        <div class="mini-card">
+          <h3>🚀 Innovation</h3>
+          <p>Always experimenting with new ideas and technologies.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>🎨 Creativity</h3>
+          <p>Focused on elegant visuals and immersive experiences.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>🤖 AI & Tech</h3>
+          <p>Exploring modern tools and future-driven solutions.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>🌍 Growth</h3>
+          <p>Continuously learning and evolving every single day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">Who I Am</h2>
+    <p class="section-subtitle">
+      This website was designed as a premium digital identity — modern, minimal, and futuristic. It reflects ambition, creativity, and curiosity.
+    </p>
+
+    <div class="about-grid">
+      <div class="glass">
+        <h3>Creative Mindset</h3>
+        <p>
+          I enjoy discovering new concepts, designing unique experiences, and turning imagination into real digital creations.
+        </p>
+      </div>
+
+      <div class="glass">
+        <h3>Technology Driven</h3>
+        <p>
+          I actively explore AI, web technologies, and innovative tools to stay ahead and keep learning.
+        </p>
+      </div>
+
+      <div class="glass">
+        <h3>Future Focused</h3>
+        <p>
+          I believe the future belongs to creators who combine technology, creativity, and originality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Interests & Strengths</h2>
+    <p class="section-subtitle">
+      A blend of technology, creativity, and curiosity powers everything I build.
+    </p>
+
+    <div class="skills">
+      <div class="skill">Artificial Intelligence</div>
+      <div class="skill">Modern Web Design</div>
+      <div class="skill">Creative Thinking</div>
+      <div class="skill">UI / UX Concepts</div>
+      <div class="skill">Digital Innovation</div>
+      <div class="skill">Learning & Experimentation</div>
+      <div class="skill">Future Technologies</div>
+      <div class="skill">Personal Branding</div>
+    </div>
+  </section>
+
+  <section id="vision">
+    <h2 class="section-title">My Vision</h2>
+    <p class="section-subtitle">
+      I want to create impactful experiences, learn continuously, and push beyond ordinary ideas. This website represents the beginning of something bigger.
+    </p>
+
+    <div class="glass">
+      <h3 style="margin-bottom:18px;">"Build. Learn. Create. Repeat."</h3>
+      <p>
+        The future is shaped by people willing to experiment, adapt, and innovate. My goal is to keep moving forward while creating things that inspire others.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 • Designed with a futuristic aesthetic and premium user experience.
+  </footer>
+
+</body>
+</html>
