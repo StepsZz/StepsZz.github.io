@@ -91,7 +91,7 @@
         .testi-card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid var(--border); transition: 0.4s; }
         .testi-card:hover { transform: scale(1.03); border-color: var(--accent-red); }
         .testi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .testi-header img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-red); }
+        .testi-header img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--accent-red); object-fit: cover; }
         .stars { color: #fbbf24; margin-top: 10px; }
 
         /* --- İLETİŞİM --- */
@@ -169,24 +169,44 @@
                 </div>
             </section>
 
-            <!-- YORUMLAR -->
+            <!-- YORUMLAR (Düzeltilmiş Bölüm) -->
             <section id="testimonials" style="margin-top: 100px;" data-aos="fade-up">
                 <h2 data-lang="testi-title">Müşteri Yorumları</h2>
                 <div class="testi-grid">
+                    <!-- Erkek 1 -->
                     <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="testi-header">
-                            <img src="https://i.pravatar.cc/150?u=1" alt="User">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Can Yılmaz">
                             <div><h4 style="font-size: 1rem;">Can Yılmaz</h4><small style="color: var(--accent-red);">Tech CEO</small></div>
                         </div>
                         <p style="font-size: 0.9rem; font-style: italic; color: var(--text-dim);" data-lang="t1-p">"StepsProject ekibiyle çalışmak vizyonumuzu değiştirdi. Hız ve tasarım tek kelimeyle mükemmel."</p>
                         <div class="stars">★★★★★</div>
                     </div>
+                    <!-- Kadın 1 -->
                     <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="testi-header">
-                            <img src="https://i.pravatar.cc/150?u=2" alt="User">
+                            <img src="https://i.pravatar.cc/150?img=32" alt="Selin Demir">
                             <div><h4 style="font-size: 1rem;">Selin Demir</h4><small style="color: var(--accent-red);">Creative</small></div>
                         </div>
                         <p style="font-size: 0.9rem; font-style: italic; color: var(--text-dim);" data-lang="t2-p">"Modern arayüz arayışımızda tam olarak istediğimiz dinamizmi yakaladılar. Teşekkürler!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <!-- Erkek 2 -->
+                    <div class="testi-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testi-header">
+                            <img src="https://i.pravatar.cc/150?img=68" alt="Arda Turgut">
+                            <div><h4 style="font-size: 1rem;">Arda Turgut</h4><small style="color: var(--accent-red);">Founder</small></div>
+                        </div>
+                        <p style="font-size: 0.9rem; font-style: italic; color: var(--text-dim);" data-lang="t3-p">"Teknik destekleri çok hızlı. Kod kalitesi ve SEO uyumu bizi çok memnun etti."</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <!-- Kadın 2 -->
+                    <div class="testi-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="testi-header">
+                            <img src="https://i.pravatar.cc/150?img=44" alt="Deniz Akın">
+                            <div><h4 style="font-size: 1rem;">Deniz Akın</h4><small style="color: var(--accent-red);">Marketing</small></div>
+                        </div>
+                        <p style="font-size: 0.9rem; font-style: italic; color: var(--text-dim);" data-lang="t4-p">"Beklentilerimizin çok üzerinde bir iş çıktı. Dijitalde fark yaratmak isteyenlere öneririm."</p>
                         <div class="stars">★★★★★</div>
                     </div>
                 </div>
@@ -226,8 +246,11 @@
                 'about-text': 'StepsProject, teknoloji ve estetiği bir araya getiren bir dijital çözüm merkezidir. Her adımda yenilikçi yaklaşımlar sergileyerek markanızı geleceğe taşıyoruz.',
                 'services-title': 'Hizmetlerimiz', 's1-h': 'Web Geliştirme', 's1-p': 'Modern ve hızlı arayüzler ile kullanıcı deneyimini zirveye taşıyoruz.',
                 's2-h': 'SEO & Performans', 's2-p': 'Sitenizin hızını ve arama motoru görünürlüğünü optimize ediyoruz.',
-                'testi-title': 'Müşteri Yorumları', 't1-p': '"StepsProject ekibiyle çalışmak vizyonumuzu değiştirdi. Hız ve tasarım tek kelimeyle mükemmel."',
+                'testi-title': 'Müşteri Yorumları', 
+                't1-p': '"StepsProject ekibiyle çalışmak vizyonumuzu değiştirdi. Hız ve tasarım tek kelimeyle mükemmel."',
                 't2-p': '"Modern arayüz arayışımızda tam olarak istediğimiz dinamizmi yakaladılar. Teşekkürler!"',
+                't3-p': '"Teknik destekleri çok hızlı. Kod kalitesi ve SEO uyumu bizi çok memnun etti."',
+                't4-p': '"Beklentilerimizin çok üzerinde bir iş çıktı. Dijitalde fark yaratmak isteyenlere öneririm."',
                 'contact-title': 'Bize Ulaşın', 'c-email': 'E-Posta', 'c-social': 'Sosyal Medya',
                 'footer': '© 2026 StepsProject. Tüm hakları saklıdır.',
                 'typewriter': ["Geleceği Tasarla.", "Hızı Hisset.", "StepsProject."]
@@ -238,8 +261,11 @@
                 'about-text': 'StepsProject is a digital solutions hub combining technology and aesthetics. We carry your brand to the future with innovative steps.',
                 'services-title': 'Our Services', 's1-h': 'Web Development', 's1-p': 'We elevate user experience with modern and fast interfaces.',
                 's2-h': 'SEO & Performance', 's2-p': 'We optimize your site speed and search engine visibility.',
-                'testi-title': 'Testimonials', 't1-p': '"Working with StepsProject changed our vision. Speed and design are simply perfect."',
+                'testi-title': 'Testimonials', 
+                't1-p': '"Working with StepsProject changed our vision. Speed and design are simply perfect."',
                 't2-p': '"They captured the exact dynamism we wanted for our interface. Thanks!"',
+                't3-p': '"Their technical support is very fast. We are very satisfied with code quality and SEO."',
+                't4-p': '"The result was way beyond our expectations. Highly recommended for digital impact."',
                 'contact-title': 'Contact Us', 'c-email': 'E-Mail', 'c-social': 'Social Media',
                 'footer': '© 2026 StepsProject. All rights reserved.',
                 'typewriter': ["Design the Future.", "Feel the Speed.", "StepsProject."]
