@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StepsKyraxana | Portfolio</title>
+    <title>StepsProject | Portfolio</title>
     <!-- Partikül Kütüphanesi -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
@@ -157,7 +157,7 @@
         </nav>
 
         <header>
-            <h1>StepsKyraxana</h1>
+            <h1>StepsProject</h1>
             <div class="typewriter-container">
                 <span id="typewriter-text"></span>
             </div>
@@ -181,12 +181,12 @@
             <section id="hakkimda" class="section">
                 <h2 data-key="about-title">Hakkımda</h2>
                 <p data-key="about-content" style="font-size: 1.2rem; color: var(--text-dim);">
-                    Ben StepsKyraxana. İstanbul merkezli, dijital dünyada fark yaratmaya odaklanmış bir vizyonerim.
+                    Biz StepsProject ekibiyiz. İstanbul merkezli, dijital dünyada fark yaratmaya odaklanmış bir vizyoner topluluğuz.
                 </p>
             </section>
 
             <section id="deneyim" class="section">
-                <h2 data-key="exp-title">Neler Yapıyorum?</h2>
+                <h2 data-key="exp-title">Neler Yapıyoruz?</h2>
                 <div class="grid">
                     <div class="card">
                         <h3 data-key="card1-title">Stratejik Çözümler</h3>
@@ -209,30 +209,29 @@
         </div>
 
         <footer>
-            <p data-key="footer-text">© 2026 StepsKyraxana. Tüm hakları saklıdır.</p>
+            <p data-key="footer-text">© 2026 StepsProject. Tüm hakları saklıdır.</p>
         </footer>
     </div>
 
     <script>
-        // Dil ve Daktilo Verileri
         const translations = {
             'tr': {
                 'nav-about': 'Hakkımda', 'nav-exp': 'Deneyimler', 'nav-contact': 'İletişim',
                 'stat-visits': 'Toplam Ziyaret', 'stat-online': 'Çevrimiçi',
-                'about-title': 'Hakkımda', 'about-content': 'Ben StepsKyraxana. İstanbul merkezli bir vizyonerim.',
+                'about-title': 'Hakkımda', 'about-content': 'Biz StepsProject ekibiyiz. İstanbul merkezli bir vizyoner topluluğuz.',
                 'exp-title': 'Neler Yapıyorum?', 'card1-title': 'Stratejik Çözümler', 'card1-desc': 'Fikirleri analiz ediyoruz.',
                 'card2-title': 'Modern Geliştirme', 'card2-desc': 'Dijital yapılar inşa ediyoruz.',
-                'contact-title': 'İletişim', 'location-label': 'Konum', 'footer-text': '© 2026 StepsKyraxana. Tüm hakları saklıdır.',
+                'contact-title': 'İletişim', 'location-label': 'Konum', 'footer-text': '© 2026 StepsProject. Tüm hakları saklıdır.',
                 'phrases': ["Dijital Yenilikçi", "Problem Çözücü", "Kreatif Zihin"]
             },
             'en': {
                 'nav-about': 'About', 'nav-exp': 'Experience', 'nav-contact': 'Contact',
                 'stat-visits': 'Total Visits', 'stat-online': 'Online Now',
-                'about-title': 'About Me', 'about-content': 'I am StepsKyraxana. A visionary based in Istanbul.',
-                'exp-title': 'What I Do?', 'card1-title': 'Strategic Solutions', 'card1-desc': 'We analyze ideas.',
+                'about-title': 'About Us', 'about-content': 'We are StepsProject. A visionary collective based in Istanbul.',
+                'exp-title': 'What We Do?', 'card1-title': 'Strategic Solutions', 'card1-desc': 'We analyze ideas.',
                 'card2-title': 'Modern Development', 'card2-desc': 'We build digital structures.',
-                'contact-title': 'Contact', 'location-label': 'Location', 'footer-text': '© 2026 StepsKyraxana. All rights reserved.',
-                'phrases': ["Digital Innovator", "Problem Solver", "Creative Mind"]
+                'contact-title': 'Contact', 'location-label': 'Location', 'footer-text': '© 2026 StepsProject. All rights reserved.',
+                'phrases': ["Digital Innovators", "Problem Solvers", "Creative Minds"]
             }
         };
 
@@ -246,7 +245,6 @@
             phraseIndex = 0; charIndex = 0; isDeleting = false;
         }
 
-        // Animasyonlar: Daktilo
         const textElement = document.getElementById("typewriter-text");
         let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
         function type() {
@@ -265,13 +263,11 @@
             setTimeout(type, speed);
         }
 
-        // Animasyonlar: Ziyaretçi Simülasyonu
         function updateStats() {
             const onlineCount = document.getElementById('online-count');
             onlineCount.textContent = Math.floor(Math.random() * 15) + 5;
         }
 
-        // Partiküller (Zarif Ayarlar)
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 100 },
