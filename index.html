@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StepsProject | Portfolio</title>
-    <!-- Partikül Kütüphanesi -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
@@ -14,6 +13,7 @@
             --text-dim: #94a3b8;
             --accent: #38bdf8; 
             --success: #22c55e;
+            --gold: #fbbf24;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,7 +35,6 @@
             left: 0;
         }
 
-        /* --- Üst Menü --- */
         nav {
             position: fixed;
             top: 0;
@@ -53,7 +52,7 @@
             text-decoration: none;
             color: var(--text-main) !important;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
@@ -75,7 +74,6 @@
             font-weight: bold;
         }
 
-        /* --- Ana İçerik --- */
         .main-content { position: relative; z-index: 10; }
 
         header {
@@ -88,7 +86,7 @@
             padding: 20px;
         }
 
-        h1 { font-size: 4.5rem; margin-bottom: 15px; font-weight: 800; }
+        h1 { font-size: 4.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -2px; }
 
         .typewriter-container {
             font-size: 1.6rem;
@@ -97,7 +95,6 @@
             margin-bottom: 30px;
         }
 
-        /* --- İstatistik Tablosu --- */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -117,26 +114,25 @@
         .stat-value { display: block; font-size: 1.6rem; font-weight: bold; color: var(--accent); }
         .stat-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; }
 
-        .online-dot {
-            height: 8px; width: 8px; background: var(--success);
-            border-radius: 50%; display: inline-block; margin-right: 5px;
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 1; }
-            70% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(0.95); opacity: 1; }
-        }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 100px 20px; }
-        .section { margin-bottom: 100px; }
-        h2 { color: var(--accent); border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 30px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 100px 20px; }
+        .section { margin-bottom: 120px; }
+        h2 { color: var(--accent); border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 40px; font-size: 2rem; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { padding: 40px; background: var(--bg-card); border-radius: 20px; border: 1px solid rgba(255,255,255,0.03); transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        /* --- Yorumlar Bölümü Stili --- */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+        .stars { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
+        .client-name { display: block; margin-top: 20px; font-weight: bold; color: var(--accent); }
+        .client-title { font-size: 0.8rem; color: var(--text-dim); }
 
         footer { text-align: center; padding: 60px; border-top: 1px solid rgba(255,255,255,0.05); }
 
@@ -153,6 +149,7 @@
         <nav>
             <a href="#hakkimda" data-key="nav-about">Hakkımda</a>
             <a href="#deneyim" data-key="nav-exp">Deneyimler</a>
+            <a href="#yorumlar" data-key="nav-reviews">Yorumlar</a>
             <a href="#iletisim" data-key="nav-contact">İletişim</a>
         </nav>
 
@@ -168,10 +165,7 @@
                     <span class="stat-label" data-key="stat-visits">Toplam Ziyaret</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-value">
-                        <span class="online-dot"></span>
-                        <span id="online-count">12</span>
-                    </span>
+                    <span class="stat-value"><span id="online-count">12</span></span>
                     <span class="stat-label" data-key="stat-online">Çevrimiçi</span>
                 </div>
             </div>
@@ -180,8 +174,8 @@
         <div class="container">
             <section id="hakkimda" class="section">
                 <h2 data-key="about-title">Hakkımda</h2>
-                <p data-key="about-content" style="font-size: 1.2rem; color: var(--text-dim);">
-                    Biz StepsProject ekibiyiz. İstanbul merkezli, dijital dünyada fark yaratmaya odaklanmış bir vizyoner topluluğuz.
+                <p data-key="about-content" style="font-size: 1.2rem; color: var(--text-dim); line-height: 1.8;">
+                    Biz StepsProject ekibiyiz. İstanbul merkezli, dijital dünyada fark yaratmaya odaklanmış bir vizyoner topluluğuz. Karmaşık problemleri estetik ve fonksiyonel kod yapısıyla çözüyoruz.
                 </p>
             </section>
 
@@ -190,20 +184,39 @@
                 <div class="grid">
                     <div class="card">
                         <h3 data-key="card1-title">Stratejik Çözümler</h3>
-                        <p data-key="card1-desc">Analiz ediyor ve gerçeğe dönüştürüyoruz.</p>
+                        <p data-key="card1-desc">İş süreçlerinizi analiz ediyor ve en verimli dijital yol haritasını çiziyoruz.</p>
                     </div>
                     <div class="card">
                         <h3 data-key="card2-title">Modern Geliştirme</h3>
-                        <p data-key="card2-desc">Hızlı ve güvenli dijital yapılar.</p>
+                        <p data-key="card2-desc">En güncel teknolojilerle hızlı, güvenli ve ölçeklenebilir yapılar inşa ediyoruz.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- YENİ: Yorumlar Bölümü -->
+            <section id="yorumlar" class="section">
+                <h2 data-key="rev-title">Müşteri Yorumları</h2>
+                <div class="grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p data-key="rev1-text">"StepsProject ile çalışmak iş akışımızı tamamen değiştirdi. Çok profesyonel bir ekip."</p>
+                        <span class="client-name">Ahmet Yılmaz</span>
+                        <span class="client-title">CEO, TechNova</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p data-key="rev2-text">"İnanılmaz hızlı dönüşler ve harika bir tasarım anlayışı. Kesinlikle tavsiye ediyorum."</p>
+                        <span class="client-name">Sarah Connor</span>
+                        <span class="client-title">Girişimci</span>
                     </div>
                 </div>
             </section>
 
             <section id="iletisim" class="section">
                 <h2 data-key="contact-title">İletişim</h2>
-                <div class="card" style="max-width: 400px;">
-                    <p><strong>Email:</strong> stepshilecizz@gmail.com</p>
-                    <p><strong data-key="location-label">Konum:</strong> İstanbul, Türkiye</p>
+                <div class="card" style="max-width: 450px;">
+                    <p style="margin-bottom: 10px;"><strong>Email:</strong> stepshilecizz@gmail.com</p>
+                    <p><strong><span data-key="location-label">Konum</span>:</strong> İstanbul, Türkiye</p>
                 </div>
             </section>
         </div>
@@ -216,20 +229,26 @@
     <script>
         const translations = {
             'tr': {
-                'nav-about': 'Hakkımda', 'nav-exp': 'Deneyimler', 'nav-contact': 'İletişim',
+                'nav-about': 'Hakkımda', 'nav-exp': 'Deneyimler', 'nav-reviews': 'Yorumlar', 'nav-contact': 'İletişim',
                 'stat-visits': 'Toplam Ziyaret', 'stat-online': 'Çevrimiçi',
-                'about-title': 'Hakkımda', 'about-content': 'Biz StepsProject ekibiyiz. İstanbul merkezli bir vizyoner topluluğuz.',
-                'exp-title': 'Neler Yapıyorum?', 'card1-title': 'Stratejik Çözümler', 'card1-desc': 'Fikirleri analiz ediyoruz.',
+                'about-title': 'Hakkımda', 'about-content': 'Biz StepsProject ekibiyiz. İstanbul merkezli bir vizyoner topluluğuz. Karmaşık problemleri estetik ve fonksiyonel kod yapısıyla çözüyoruz.',
+                'exp-title': 'Neler Yapıyorum?', 'card1-title': 'Stratejik Çözümler', 'card1-desc': 'İş süreçlerinizi analiz ediyoruz.',
                 'card2-title': 'Modern Geliştirme', 'card2-desc': 'Dijital yapılar inşa ediyoruz.',
+                'rev-title': 'Müşteri Yorumları',
+                'rev1-text': '"StepsProject ile çalışmak iş akışımızı tamamen değiştirdi. Çok profesyonel bir ekip."',
+                'rev2-text': '"İnanılmaz hızlı dönüşler ve harika bir tasarım anlayışı. Kesinlikle tavsiye ediyorum."',
                 'contact-title': 'İletişim', 'location-label': 'Konum', 'footer-text': '© 2026 StepsProject. Tüm hakları saklıdır.',
                 'phrases': ["Dijital Yenilikçi", "Problem Çözücü", "Kreatif Zihin"]
             },
             'en': {
-                'nav-about': 'About', 'nav-exp': 'Experience', 'nav-contact': 'Contact',
+                'nav-about': 'About', 'nav-exp': 'Experience', 'nav-reviews': 'Reviews', 'nav-contact': 'Contact',
                 'stat-visits': 'Total Visits', 'stat-online': 'Online Now',
-                'about-title': 'About Us', 'about-content': 'We are StepsProject. A visionary collective based in Istanbul.',
-                'exp-title': 'What We Do?', 'card1-title': 'Strategic Solutions', 'card1-desc': 'We analyze ideas.',
+                'about-title': 'About Us', 'about-content': 'We are StepsProject. A visionary collective based in Istanbul. We solve complex problems with aesthetic and functional code.',
+                'exp-title': 'What We Do?', 'card1-title': 'Strategic Solutions', 'card1-desc': 'We analyze your business processes.',
                 'card2-title': 'Modern Development', 'card2-desc': 'We build digital structures.',
+                'rev-title': 'Client Reviews',
+                'rev1-text': '"Working with StepsProject completely changed our workflow. A very professional team."',
+                'rev2-text': '"Incredible turnaround times and a great sense of design. Highly recommended."',
                 'contact-title': 'Contact', 'location-label': 'Location', 'footer-text': '© 2026 StepsProject. All rights reserved.',
                 'phrases': ["Digital Innovators", "Problem Solvers", "Creative Minds"]
             }
@@ -270,12 +289,12 @@
 
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 100 },
+                "number": { "value": 80 },
                 "color": { "value": "#38bdf8" },
-                "opacity": { "value": 0.3 },
+                "opacity": { "value": 0.2 },
                 "size": { "value": 1.5, "random": true },
                 "line_linked": { "enable": true, "distance": 150, "color": "#38bdf8", "opacity": 0.1 },
-                "move": { "enable": true, "speed": 0.6 }
+                "move": { "enable": true, "speed": 0.5 }
             }
         });
 
