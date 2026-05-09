@@ -8,11 +8,11 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
-            --bg-deep: #0f172a; /* Derin Koyu Mavi */
+            --bg-deep: #0f172a; 
             --bg-card: #1e293b;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
-            --accent: #38bdf8; /* Parlak Mavi Aksan */
+            --accent: #38bdf8; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,7 +26,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Partikül Arkaplanı */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -75,6 +74,26 @@
         }
 
         h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
+        
+        /* Daktilo Efekti İçin Stil */
+        .typewriter-container {
+            font-size: 1.6rem;
+            color: var(--accent);
+            min-height: 1.6em;
+            font-weight: 600;
+        }
+
+        #typewriter-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         h2 { color: var(--accent); border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 30px; font-size: 1.8rem; }
 
         .section { margin-bottom: 100px; position: relative; }
@@ -99,9 +118,6 @@
             border-color: var(--accent);
             box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
         }
-
-        .card h3 { color: var(--accent); margin-bottom: 15px; }
-        .card p { color: var(--text-dim); }
 
         footer {
             text-align: center;
@@ -132,7 +148,6 @@
 </head>
 <body>
 
-    <!-- Partikül Konteynırı -->
     <div id="particles-js"></div>
 
     <nav>
@@ -143,12 +158,13 @@
 
     <header>
         <h1>StepsKyraxana</h1>
-        <p style="font-size: 1.4rem; color: var(--text-dim);">Dijital Yenilikçi | Problem Çözücü | Kreatif Zihin</p>
+        <div class="typewriter-container">
+            <span id="typewriter-text"></span>
+        </div>
         <a href="#hakkimda" class="btn">Keşfetmeye Başla</a>
     </header>
 
     <div class="container">
-        
         <section id="hakkimda" class="section">
             <h2>Hakkımda</h2>
             <p style="font-size: 1.2rem; color: var(--text-dim);">
@@ -183,32 +199,65 @@
                 <p><strong>Konum:</strong> İstanbul, Türkiye</p>
             </div>
         </section>
-
     </div>
 
     <footer>
         <p>&copy; 2026 StepsKyraxana. Tüm hakları saklıdır.</p>
     </footer>
 
-    <!-- Partikül Ayarları -->
     <script>
+        // Daktilo Efekti Scripti
+        const textElement = document.getElementById("typewriter-text");
+        const phrases = ["Dijital Yenilikçi", "Problem Çözücü", "Kreatif Zihin", "Gelecek Odaklı"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 150;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 75;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 150;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Kelime bittiğinde bekleme süresi
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Partikül Ayarları
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#38bdf8" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": false },
+                "opacity": { "value": 0.5 },
                 "size": { "value": 3, "random": true },
                 "line_linked": { "enable": true, "distance": 150, "color": "#38bdf8", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                "move": { "enable": true, "speed": 2 }
             },
             "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
-            },
-            "retina_detect": true
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
+                "modes": { "grab": { "distance": 140 } }
+            }
         });
+
+        // Efekti Başlat
+        document.addEventListener("DOMContentLoaded", type);
     </script>
 </body>
 </html>
