@@ -4,32 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StepsKyraxana | Kişisel Portfolyo</title>
+    <!-- Partikül Kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --accent: #2563eb;
-            --secondary: #64748b;
+            --bg-deep: #0f172a; /* Derin Koyu Mavi */
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8; /* Parlak Mavi Aksan */
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text);
-            background-color: var(--bg);
-            margin: 0;
-            padding: 0;
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        /* Partikül Arkaplanı */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
         }
 
         nav {
@@ -38,70 +42,98 @@
             width: 100%;
             padding: 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
         }
 
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-main);
             font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 80px 20px;
         }
 
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        h2 { color: var(--accent); border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 20px; }
+        h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
+        h2 { color: var(--accent); border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 30px; font-size: 1.8rem; }
 
-        .section { margin-bottom: 60px; }
+        .section { margin-bottom: 100px; position: relative; }
         
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
         .card {
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            transition: transform 0.2s;
+            padding: 30px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .card h3 { color: var(--accent); margin-bottom: 15px; }
+        .card p { color: var(--text-dim); }
 
         footer {
             text-align: center;
-            padding: 40px;
-            background: #1e293b;
-            color: white;
+            padding: 60px;
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid rgba(56, 189, 248, 0.1);
         }
 
         .btn {
             background: var(--accent);
-            color: white;
-            padding: 12px 24px;
+            color: var(--bg-deep);
+            padding: 15px 32px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
+            font-weight: bold;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .contact-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: bold;
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
+
+        .contact-link { color: var(--accent); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
+
+    <!-- Partikül Konteynırı -->
+    <div id="particles-js"></div>
 
     <nav>
         <a href="#hakkimda">Hakkımda</a>
@@ -111,51 +143,72 @@
 
     <header>
         <h1>StepsKyraxana</h1>
-        <p style="font-size: 1.2rem; color: var(--secondary);">Dijital Yenilikçi | Problem Çözücü | Kreatif Zihin</p>
-        <a href="#hakkimda" class="btn">Çalışmalarımı Gör</a>
+        <p style="font-size: 1.4rem; color: var(--text-dim);">Dijital Yenilikçi | Problem Çözücü | Kreatif Zihin</p>
+        <a href="#hakkimda" class="btn">Keşfetmeye Başla</a>
     </header>
 
     <div class="container">
         
         <section id="hakkimda" class="section">
             <h2>Hakkımda</h2>
-            <p>
-                Ben <strong>StepsKyraxana</strong>. Yüksek kaliteli sonuçlara ve sürekli gelişime odaklanmış, azimli bir bireyim. 
-                Yaklaşımım, teknik yetkinliği detaylara verdiğim önemle birleştirerek, 
-                üstlendiğim her projenin en yüksek mükemmellik standartlarını karşılamasını sağlar.
+            <p style="font-size: 1.2rem; color: var(--text-dim);">
+                Ben <strong>StepsKyraxana</strong>. İstanbul merkezli, dijital dünyada fark yaratmaya odaklanmış bir vizyonerim. 
+                Modern teknolojileri estetik tasarımla buluşturuyor, her projede mükemmelliği hedefliyorum.
             </p>
         </section>
 
         <section id="deneyim" class="section">
-            <h2>Temel Uzmanlık Alanları</h2>
+            <h2>Neler Yapıyorum?</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>Stratejik Planlama</h3>
-                    <p>Karmaşık verileri analiz ederek uygulanabilir içgörüler ve uzun vadeli hedefler oluşturma.</p>
+                    <h3>Stratejik Çözümler</h3>
+                    <p>Fikirleri analiz ediyor ve onları gerçeğe dönüştürecek en etkili yolları haritalandırıyorum.</p>
                 </div>
                 <div class="card">
-                    <h3>Teknik Yetkinlik</h3>
-                    <p>Modern araçlar ve dijital metodolojiler üzerinde profesyonel hakimiyet.</p>
+                    <h3>Modern Geliştirme</h3>
+                    <p>Güncel teknolojileri kullanarak hızlı, güvenli ve etkileyici dijital deneyimler inşa ediyorum.</p>
                 </div>
                 <div class="card">
-                    <h3>İletişim</h3>
-                    <p>Karmaşık fikirleri net ve öz bir şekilde ifade ederek etkili çözümler sunma.</p>
+                    <h3>Kreatif Tasarım</h3>
+                    <p>Görsel bütünlüğü ve kullanıcı deneyimini ön planda tutan şık arayüzler tasarlıyorum.</p>
                 </div>
             </div>
         </section>
 
         <section id="iletisim" class="section">
-            <h2>İletişime Geçin</h2>
-            <p>Yeni projeler, yaratıcı fikirler veya vizyonunuzun bir parçası olma fırsatları hakkında konuşmaya her zaman açığım.</p>
-            <p><strong>E-posta:</strong> <a href="mailto:stepshilecizz@gmail.com" class="contact-link">stepshilecizz@gmail.com</a></p>
-            <p><strong>Konum:</strong> İstanbul, Türkiye</p>
+            <h2>Bağlantı Kurun</h2>
+            <p>Yeni bir proje veya sadece merhaba demek için bana ulaşabilirsiniz.</p>
+            <div class="card" style="margin-top: 20px; max-width: 400px;">
+                <p><strong>E-posta:</strong> <a href="mailto:stepshilecizz@gmail.com" class="contact-link">stepshilecizz@gmail.com</a></p>
+                <p><strong>Konum:</strong> İstanbul, Türkiye</p>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 StepsKyraxana. Gelecek için tasarlandı.</p>
+        <p>&copy; 2026 StepsKyraxana. Tüm hakları saklıdır.</p>
     </footer>
 
+    <!-- Partikül Ayarları -->
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#38bdf8" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#38bdf8", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
