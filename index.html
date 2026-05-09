@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StepsProject | Portfolio</title>
+    <!-- Partikül Kütüphanesi -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- AOS Animasyon Kütüphanesi CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root {
             --bg-deep: #0a0f1d; 
@@ -122,7 +126,6 @@
         .card { padding: 40px; background: var(--bg-card); border-radius: 20px; border: 1px solid rgba(255,255,255,0.03); transition: 0.3s; }
         .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-        /* --- Yorumlar Bölümü Stili --- */
         .testimonial-card {
             background: rgba(255, 255, 255, 0.02);
             padding: 30px;
@@ -153,13 +156,13 @@
             <a href="#iletisim" data-key="nav-contact">İletişim</a>
         </nav>
 
-        <header>
+        <header data-aos="fade-in">
             <h1>StepsProject</h1>
             <div class="typewriter-container">
                 <span id="typewriter-text"></span>
             </div>
             
-            <div class="stats-grid">
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-card">
                     <span class="stat-value" id="total-visitors">1,284</span>
                     <span class="stat-label" data-key="stat-visits">Toplam Ziyaret</span>
@@ -172,7 +175,7 @@
         </header>
 
         <div class="container">
-            <section id="hakkimda" class="section">
+            <section id="hakkimda" class="section" data-aos="fade-up">
                 <h2 data-key="about-title">Hakkımda</h2>
                 <p data-key="about-content" style="font-size: 1.2rem; color: var(--text-dim); line-height: 1.8;">
                     Biz StepsProject ekibiyiz. İstanbul merkezli, dijital dünyada fark yaratmaya odaklanmış bir vizyoner topluluğuz. Karmaşık problemleri estetik ve fonksiyonel kod yapısıyla çözüyoruz.
@@ -180,30 +183,29 @@
             </section>
 
             <section id="deneyim" class="section">
-                <h2 data-key="exp-title">Neler Yapıyoruz?</h2>
+                <h2 data-key="exp-title" data-aos="fade-right">Neler Yapıyoruz?</h2>
                 <div class="grid">
-                    <div class="card">
+                    <div class="card" data-aos="zoom-in" data-aos-delay="100">
                         <h3 data-key="card1-title">Stratejik Çözümler</h3>
                         <p data-key="card1-desc">İş süreçlerinizi analiz ediyor ve en verimli dijital yol haritasını çiziyoruz.</p>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="zoom-in" data-aos-delay="300">
                         <h3 data-key="card2-title">Modern Geliştirme</h3>
                         <p data-key="card2-desc">En güncel teknolojilerle hızlı, güvenli ve ölçeklenebilir yapılar inşa ediyoruz.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- YENİ: Yorumlar Bölümü -->
             <section id="yorumlar" class="section">
-                <h2 data-key="rev-title">Müşteri Yorumları</h2>
+                <h2 data-key="rev-title" data-aos="fade-right">Müşteri Yorumları</h2>
                 <div class="grid">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card" data-aos="flip-left" data-aos-delay="100">
                         <div class="stars">★★★★★</div>
                         <p data-key="rev1-text">"StepsProject ile çalışmak iş akışımızı tamamen değiştirdi. Çok profesyonel bir ekip."</p>
                         <span class="client-name">Ahmet Yılmaz</span>
                         <span class="client-title">CEO, TechNova</span>
                     </div>
-                    <div class="testimonial-card">
+                    <div class="testimonial-card" data-aos="flip-left" data-aos-delay="300">
                         <div class="stars">★★★★★</div>
                         <p data-key="rev2-text">"İnanılmaz hızlı dönüşler ve harika bir tasarım anlayışı. Kesinlikle tavsiye ediyorum."</p>
                         <span class="client-name">Sarah Connor</span>
@@ -212,7 +214,7 @@
                 </div>
             </section>
 
-            <section id="iletisim" class="section">
+            <section id="iletisim" class="section" data-aos="fade-up">
                 <h2 data-key="contact-title">İletişim</h2>
                 <div class="card" style="max-width: 450px;">
                     <p style="margin-bottom: 10px;"><strong>Email:</strong> stepshilecizz@gmail.com</p>
@@ -226,7 +228,16 @@
         </footer>
     </div>
 
+    <!-- AOS Animasyon Kütüphanesi JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Animasyonları Başlat
+        AOS.init({
+            duration: 1000, // 1 saniye
+            once: true,     // Sadece bir kez animasyon yap
+            offset: 100     // Görünürlüğe 100px kala başla
+        });
+
         const translations = {
             'tr': {
                 'nav-about': 'Hakkımda', 'nav-exp': 'Deneyimler', 'nav-reviews': 'Yorumlar', 'nav-contact': 'İletişim',
